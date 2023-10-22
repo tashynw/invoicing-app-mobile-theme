@@ -12,6 +12,7 @@ import {Dimensions, SafeAreaView, StatusBar} from 'react-native';
 import HomePage from './pages/Home';
 import BottomNavigationBar from './components/BottomNavigationBar';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import CreatePage from './pages/Create';
 
 function App(): JSX.Element {
   return (
@@ -26,7 +27,7 @@ function App(): JSX.Element {
             bg="white"
             minHeight={Dimensions.get('window').height}
             p={20}>
-            <HomePage />
+            <CreatePage />
           </Box>
         </ScrollView>
         <BottomNavigationBar />
