@@ -146,7 +146,7 @@ const CreatePage = () => {
           </Text>
           <Heading size="2xl">$ 5,200</Heading>
         </VStack>
-        <Box p={20} bg="$green400" borderRadius="$2xl">
+        <Box p={20} bg="$green400" borderRadius="$lg">
           <HStack gap="$3" alignItems="center">
             <Icon as={ScrollText} color="white" size="lg" />
             <Heading size="md" color="white">
