@@ -9,9 +9,11 @@ import {
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
-type Props = {};
+type Props = {
+  navigation: any;
+};
 
-const BottomNavigationBar = (props: Props) => {
+const BottomNavigationBar = ({navigation}: Props) => {
   return (
     <HStack
       w="100%"
@@ -25,7 +27,7 @@ const BottomNavigationBar = (props: Props) => {
       justifyContent="space-between"
       position="absolute"
       bottom={0}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
         <VStack gap="$2" alignItems="center">
           <Icon as={HomeIcon} size="xl" color="$trueGray500" />
           <Text fontWeight="$bold" size="sm" color="$trueGray400">
@@ -33,11 +35,11 @@ const BottomNavigationBar = (props: Props) => {
           </Text>
         </VStack>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Create')}>
         <VStack gap="$2" alignItems="center">
           <Icon as={Compass} size="xl" color="$trueGray500" />
           <Text fontWeight="$bold" size="sm" color="$trueGray400">
-            Explore
+            Create
           </Text>
         </VStack>
       </TouchableOpacity>

@@ -6,32 +6,32 @@
  */
 
 import {config} from '@gluestack-ui/config';
-import {Box, GluestackUIProvider, ScrollView} from '@gluestack-ui/themed';
+import {GluestackUIProvider} from '@gluestack-ui/themed';
 import React from 'react';
-import {Dimensions, SafeAreaView, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import HomePage from './pages/Home';
-import BottomNavigationBar from './components/BottomNavigationBar';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import CreatePage from './pages/Create';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import BottomNavigationBar from './components/BottomNavigationBar';
+
+const Stack = createNativeStackNavigator();
 
 function App(): JSX.Element {
   return (
     <GluestackUIProvider config={config}>
-      <SafeAreaView style={Colors.lighter}>
+      <NavigationContainer>
         <StatusBar barStyle="light-content" />
-        {/*body*/}
-        <ScrollView w="100%">
-          <Box
-            w="100%"
-            alignItems="flex-start"
-            bg="white"
-            minHeight={Dimensions.get('window').height}
-            p={20}>
-            <CreatePage />
-          </Box>
-        </ScrollView>
-        <BottomNavigationBar />
-      </SafeAreaView>
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Home" component={HomePage} />
+          <Stack.Screen name="Create" component={CreatePage} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      {/* <BottomNavigationBar /> */}
     </GluestackUIProvider>
   );
 }
